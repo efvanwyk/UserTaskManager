@@ -66,3 +66,25 @@ curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET
 
 ```sh
 curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://hostname/api/user/{user_id}/task
+```
+
+# The following command shell scripts are available for convenience:
+* To package the example, run:
+```sh
+build_package.cmd
+```
+
+* To remove the current h2 database, run:
+```sh
+db_cmds\DELETE_DATABASE.cmd
+```
+
+* To setup the h2 database, run:
+```sh
+db_cmds\db_setup.cmd
+```
+
+* To run the server, run:
+```sh
+run_server.cmd
+```
