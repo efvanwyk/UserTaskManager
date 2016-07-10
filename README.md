@@ -3,22 +3,25 @@ This application manages users and user tasks.
 
 # Running The Application
 
-To test the example application run the following commands.
+To test the application, run the following commands:
 
-* To package the example run.
+* To package the example, run:
+```sh
+mvn package
+```
 
-        mvn package
+* To setup the h2 database, run:
+```sh
+java -jar target/user-task-manager-1.0-SNAPSHOT.jar db migrate usertaskmanager.yml
+```
 
-* To setup the h2 database run.
-
-        java -jar target/user-task-manager-1.0-SNAPSHOT.jar db migrate usertaskmanager.yml
-
-* To run the server run.
-
-        java -jar target/user-task-manager-1.0-SNAPSHOT.jar server usertaskmanager.yml
+* To run the server, run:
+```sh
+java -jar target/user-task-manager-1.0-SNAPSHOT.jar server usertaskmanager.yml
+```
 
 # Using The Application
-### Create user
+#### Create user
 ```sh
 curl -i -H "Content-Type: application/json" -X POST -d '{"username":"jsmith","first_name" : "John", "last_name" : "Smith"} 'http://hostname/api/user
 ```
