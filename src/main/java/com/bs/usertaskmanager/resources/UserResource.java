@@ -61,25 +61,6 @@ public class UserResource {
         return update(userId.get(), user);
     }
 
-//    @GET
-//    @Path("/view_freemarker")
-//    @UnitOfWork
-//    @Produces(MediaType.TEXT_HTML)
-//    public PersonView getPersonViewFreemarker(@PathParam("personId") LongParam personId) {
-//        return new PersonView(PersonView.Template.FREEMARKER, findSafely(personId.get()));
-//    }
-    
-//	@GET
-//	public User getUser(@PathParam("user_id") LongParam userId) {
-//		return find(userId.get());
-//	}
-//	
-//	@PUT
-//    @UnitOfWork
-//	public User updateUser(@PathParam("user_id") LongParam userId) {
-//		return update(userId.get());
-//	}
-
 	private User find(long userId)
 	{
 		return userDao.findById(
