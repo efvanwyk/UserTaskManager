@@ -21,12 +21,6 @@ import com.google.common.base.MoreObjects;
                 name = User.QUERY_FIND_ALL,
                 query = "SELECT u FROM User u"
         )
-//        ,
-//        @NamedQuery(
-//        		name = "com.javaeeeee.dwstart.core.Employee.findByName",
-//        query = "select e from Employee e "
-//        + "where e.firstName like :name "
-//        + "or e.lastName like :name")
 })
 public class User {
 	@Id

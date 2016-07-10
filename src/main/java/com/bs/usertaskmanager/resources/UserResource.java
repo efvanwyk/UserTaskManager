@@ -18,7 +18,7 @@ import com.bs.usertaskmanager.db.UserDao;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.params.LongParam;
 
-@Path("/user")
+@Path("/api/user")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 	

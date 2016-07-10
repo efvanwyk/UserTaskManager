@@ -1,6 +1,7 @@
 package com.bs.usertaskmanager;
 
 import com.bs.usertaskmanager.UserTaskManagerConfiguration;
+import com.bs.usertaskmanager.core.Task;
 import com.bs.usertaskmanager.core.User;
 import com.bs.usertaskmanager.db.TaskDao;
 import com.bs.usertaskmanager.db.UserDao;
@@ -23,7 +24,8 @@ public class UserTaskManagerApplication extends Application<UserTaskManagerConfi
     
 	private final HibernateBundle<UserTaskManagerConfiguration> hibernateBundle = 
 			new HibernateBundle<UserTaskManagerConfiguration>(
-			User.class) {
+			User.class,
+			Task.class) {
 		@Override
 		public DataSourceFactory getDataSourceFactory(UserTaskManagerConfiguration configuration) {
 			return configuration.getDataSourceFactory();

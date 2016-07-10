@@ -25,8 +25,8 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="decription" type="varchar(255)"/>
-            <column name="date_time" type="date"/>
+            <column name="description" type="varchar(255)"/>
+            <column name="date_time" type="varchar(30)"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

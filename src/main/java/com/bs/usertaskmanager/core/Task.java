@@ -1,6 +1,5 @@
 package com.bs.usertaskmanager.core;
 
-import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -16,23 +15,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 
 @Entity
-@Table(name = "Task")
+@Table(name = "task")
 @NamedQueries({
         @NamedQuery(
                 name = Task.QUERY_FIND_ALL_BY_USER_ID,
                 query = "SELECT t FROM Task t WHERE t.user_id = :user_id"
+        ),
+        @NamedQuery(
+        		name = Task.QUERY_FIND_ALL,
+        		query = "SELECT t FROM Task t"
         )
-//        ,
-//        @NamedQuery(name = "com.javaeeeee.dwstart.core.Employee.findByName",
-//        query = "select e from Employee e "
-//        + "where e.firstName like :name "
-//        + "or e.lastName like :name")
-//        ,
-//        @NamedQuery(
-//        		name = "com.javaeeeee.dwstart.core.Employee.findByName",
-//        query = "select e from Employee e "
-//        + "where e.firstName like :name "
-//        + "or e.lastName like :name")
 })
 public class Task {
 	@Id
@@ -49,12 +41,12 @@ public class Task {
 	private String description;
 	
 	@Column(name = "date_time", nullable = true)
-	private Date date_time;
+	private String date_time;
 	
 	public Task() {
 	}
 
-	public Task(long user_id, String name, String description, Date date_time) {
+	public Task(long user_id, String name, String description, String date_time) {
 		this.user_id = user_id;
 		this.name = name;
 		this.description = description;
@@ -98,11 +90,11 @@ public class Task {
 	}
 
 	@JsonProperty
-	public Date getDate_time() {
+	public String getDate_time() {
 		return date_time;
 	}
 
-	public void setDate_time(Date date_time) {
+	public void setDate_time(String date_time) {
 		this.date_time = date_time;
 	}
 
@@ -160,5 +152,6 @@ public class Task {
 		return Objects.hash(task_id, user_id, name, description, date_time);
 	}
 
-	public static final String QUERY_FIND_ALL_BY_USER_ID = "com.bs.usertaskmanager.core.Task.findAll";
+	public static final String QUERY_FIND_ALL_BY_USER_ID = "com.bs.usertaskmanager.core.Task.findAllByUserId";
+	public static final String QUERY_FIND_ALL = "com.bs.usertaskmanager.core.Task.findAll";
 }
