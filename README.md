@@ -24,7 +24,7 @@ java -jar target/user-task-manager-1.0-SNAPSHOT.jar server usertaskmanager.yml
 See the [Postman](http://www.getpostman.com/) chrome plugin, or alternatively, run any of the following curl commands:
 #### Create user
 ```sh
-curl -i -H "Content-Type: application/json" -X POST -d '{"username":"jsmith","first_name" : "John", "last_name" : "Smith"} 'http://hostname/api/user
+curl -i -H "Content-Type: application/json" -X POST -d '{"username":"jsmith","first_name" : "John", "last_name" : "Smith"}' http://hostname/api/user
 ```
 
 #### Update user
@@ -66,6 +66,3 @@ curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET
 
 ```sh
 curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://hostname/api/user/{user_id}/task
-
-# Alternative execution
-See the 
