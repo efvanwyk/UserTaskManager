@@ -27,12 +27,12 @@ build_package.cmd
 
 * To remove the current h2 database, run:
 ```sh
-db_cmds\DELETE_DATABASE.cmd
+db_cmd\DELETE_DATABASE.cmd
 ```
 
 * To setup the h2 database, run:
 ```sh
-db_cmds\db_setup.cmd
+db_cmd\db_setup.cmd
 ```
 
 * To run the server, run:
