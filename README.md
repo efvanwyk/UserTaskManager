@@ -94,12 +94,14 @@ curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET
 ```
 
 ### The following command line scripts make use of these curl commands and are available for convenience
-#### curl_cmd/CreateUser.cmd
-#### curl_cmd/GetUser.cmd
-#### curl_cmd/GetUsers.cmd
-#### curl_cmd/UpdateUser.cmd
-#### curl_cmd/CreateTask.cmd
-#### curl_cmd/GetUserTask.cmd
-#### curl_cmd/GetUserTasks.cmd
-#### curl_cmd/UpdateTask.cmd
-#### curl_cmd/DeleteTask.cmd
+```sh
+curl_cmd/CreateUser.cmd
+curl_cmd/GetUser.cmd
+curl_cmd/GetUsers.cmd
+curl_cmd/UpdateUser.cmd
+curl_cmd/CreateTask.cmd
+curl_cmd/GetUserTask.cmd
+curl_cmd/GetUserTasks.cmd
+curl_cmd/UpdateTask.cmd
+curl_cmd/DeleteTask.cmd
+```
