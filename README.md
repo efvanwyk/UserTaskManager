@@ -19,7 +19,7 @@ java -jar target/user-task-manager-1.0-SNAPSHOT.jar db migrate usertaskmanager.y
 java -jar target/user-task-manager-1.0-SNAPSHOT.jar server usertaskmanager.yml
 ```
 
-### The following command shell scripts are available for convenience:
+### The following command line scripts are available for convenience:
 * To package the example, run:
 ```sh
 build_package.cmd
@@ -92,3 +92,14 @@ curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET
 ```sh
 curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://hostname/api/user/{user_id}/task
 ```
+
+### The following command line scripts make use of these curl commands and are available for convenience
+#### curl_cmd/CreateUser.cmd
+#### curl_cmd/GetUser.cmd
+#### curl_cmd/GetUsers.cmd
+#### curl_cmd/UpdateUser.cmd
+#### curl_cmd/CreateTask.cmd
+#### curl_cmd/GetUserTask.cmd
+#### curl_cmd/GetUserTasks.cmd
+#### curl_cmd/UpdateTask.cmd
+#### curl_cmd/DeleteTask.cmd
