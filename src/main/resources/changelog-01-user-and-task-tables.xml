@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog logicalFilePath="changelog-01-user-and-task-tables.xml"
+       xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+	<changeSet id="1" author="efvanwyk" runOnChange="true">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="user"/>
+			</not>
+		</preConditions>
+		<createTable tableName="user">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="username" type="varchar(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="first_name" type="varchar(255)"/>
+			<column name="last_name" type="varchar(255)"/>
+		</createTable>
+	</changeSet>
+	<changeSet id="2" author="efvanwyk" runOnChange="true">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="task"/>
+			</not>
+		</preConditions>
+		<createTable tableName="task">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="user_id" type="bigint"/>
+			<column name="name" type="varchar(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="description" type="varchar(255)"/>
+			<column name="date_time" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="3" author="efvanwyk" runOnChange="true">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="task"/>
+			<not>
+				<indexExists tableName="task" indexName="idx_task_user_id"/>
+			</not>
+		</preConditions>
+		<createIndex  indexName="idx_task_user_id" tableName="task">
+			<column name="user_id"/>
+		</createIndex>
+	</changeSet>
+</databaseChangeLog>
