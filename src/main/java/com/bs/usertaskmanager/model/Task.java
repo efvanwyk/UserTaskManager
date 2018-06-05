@@ -12,7 +12,10 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import util.ValidationUtil;
 
@@ -32,7 +35,9 @@ public class Task
 	
 //	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
 //	private Long userId;
-	@ManyToOne
+	@ManyToOne()
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+	@JsonIdentityReference(alwaysAsId = true)
 	private User user;
 	
 	public Task()

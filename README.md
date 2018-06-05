@@ -30,6 +30,17 @@ run_server.cmd
 build_and_run.cmd
 ```
 
+# Maintenance
+### The H2 backing database can be accessed through the following details:
+```sh
+URL: localhost:8080\h2
+Driver Class: org.h2.Driver
+JDBC URL 8: jdbc:h2:file:~/h2/user_task_manager_db
+User Name: sa
+Password:
+```
+### A scheduled task runs every 20 seconds and will update any tasks that are in a "pending" status and where the date_time has passed.
+
 # Using The Application
 See the [Postman](http://www.getpostman.com/) chrome plugin, or alternatively, run any of the following curl commands:
 #### Create user
@@ -86,13 +97,4 @@ curl_cmd/GetTaskForUser.cmd
 curl_cmd/GetTasksForUser.cmd
 curl_cmd/GetUser.cmd
 curl_cmd/GetUsers.cmd
-```
-
-### The H2 backing database can be accessed through the following details:
-```sh
-URL: localhost:8080\h2
-Driver Class: org.h2.Driver
-JDBC URL 8: jdbc:h2:file:~/h2/user_task_manager_db
-User Name: sa
-Password:
 ```
