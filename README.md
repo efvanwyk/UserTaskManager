@@ -90,9 +90,9 @@ curl_cmd/GetUsers.cmd
 
 ### The H2 backing database can be accessed through the following details:
 ```sh
-URL: localhost:8080\h2
-Driver Class: org.h2.Driver
-JDBC URL: jdbc:h2:file:~/h2/user_task_manager_db
-User Name: sa
-Password:
+**URL**: localhost:8080\h2
+**Driver Class**: org.h2.Driver
+**JDBC URL*8: jdbc:h2:file:~/h2/user_task_manager_db
+**User Name**: sa
+**Password**:
 ```
