@@ -39,8 +39,9 @@ JDBC URL 8: jdbc:h2:file:~/h2/user_task_manager_db
 User Name: sa
 Password:
 ```
+
 ### Scheduled Tasks
-* The Task Completion Scheduled runs every 20 seconds and will update any tasks that are in a "pending" status and where the date_time has passed.
+* The Task Completion Scheduler runs every 20 seconds and will update any tasks that are in a "pending" status and where the date_time has passed.
 
 # Using The Application
 See the [Postman](http://www.getpostman.com/) chrome plugin, or alternatively, run any of the following curl commands:
