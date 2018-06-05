@@ -5,7 +5,7 @@ CD /d %~dp0
 IF [%1] == [] GOTO USAGE
 IF [%2] == [] GOTO USAGE
 
-curl -i -H "Content-Type: application/json" -X DELETE http://localhost:80/api/user/%1/task/%2
+curl -i -H "Content-Type: application/json" -X DELETE http://localhost:8080/api/user/%1/task/%2
 
 GOTO END
 

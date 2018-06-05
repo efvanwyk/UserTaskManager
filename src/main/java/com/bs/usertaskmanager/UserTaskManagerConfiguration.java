@@ -1,25 +1,19 @@
 package com.bs.usertaskmanager;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import org.h2.server.web.WebServlet;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.dropwizard.Configuration;
-import io.dropwizard.db.DataSourceFactory;
-
-public class UserTaskManagerConfiguration extends Configuration{
-	@Valid
-	@NotNull
-	private DataSourceFactory database = new DataSourceFactory();
-
-	@JsonProperty("database")
-	public DataSourceFactory getDataSourceFactory() {
-		return database;
-	}
-
-	@JsonProperty("database")
-	public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
-		this.database = dataSourceFactory;
-	}
+@Configuration
+public class UserTaskManagerConfiguration
+{
+    @Bean
+    ServletRegistrationBean<WebServlet> h2servletRegistration()
+    {
+        ServletRegistrationBean<WebServlet> registrationBean = new ServletRegistrationBean<WebServlet>( new WebServlet());
+        registrationBean.setName("User Task Manager (H2 Server)");
+        registrationBean.addUrlMappings("/h2/*");
+        return registrationBean;
+    }
 }

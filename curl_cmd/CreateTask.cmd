@@ -7,7 +7,7 @@ IF [%2] == [] GOTO USAGE
 IF [%3] == [] GOTO USAGE
 IF [%4] == [] GOTO USAGE
 
-curl -i -H "Content-Type: application/json" -X POST -d "{\"name\":\"%2\",\"description\":\"%3\", \"date_time\":\"%4\"}" http://localhost:80/api/user/%1/task/
+curl -i -H "Content-Type: application/json" -X POST -d "{\"name\":%2,\"description\":%3, \"date_time\":%4}" http://localhost:8080/api/user/%1/task/
 
 GOTO END
 
