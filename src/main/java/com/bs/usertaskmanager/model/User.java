@@ -9,9 +9,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
 
+import com.bs.util.ValidationUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import util.ValidationUtil;
 
 @Entity
 @Table(name = "user")
@@ -42,20 +41,6 @@ public class User
 	private User(long id) 
 	{
 		this.id = id;
-	}
-	
-	User(String username, String firstname, String lastname, boolean allowEmptyValues) 
-	{
-		if (!allowEmptyValues)
-		{
-			ValidationUtil.isSet("username", username);
-			ValidationUtil.isSet("firstname", firstname);
-			ValidationUtil.isSet("lastname", lastname);
-		}
-		
-		this.username = username;
-		this.firstname = firstname;
-		this.lastname = lastname;
 	}
 	
 	/**
@@ -117,8 +102,10 @@ public class User
 	
 	public User update(User update)
 	{
-		this.firstname = update.getFirstname();
-		this.lastname = update.getLastname();
+		if (!ValidationUtil.checkIsNullOrEmpty(update.getFirstname()))
+			this.firstname = update.getFirstname();
+		if (!ValidationUtil.checkIsNullOrEmpty(update.getLastname()))
+			this.lastname = update.getLastname();
 		return this;
 	}
 	

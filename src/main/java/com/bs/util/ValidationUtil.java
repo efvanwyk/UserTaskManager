@@ -1,4 +1,4 @@
-package util;
+package com.bs.util;
 
 public class ValidationUtil 
 {
