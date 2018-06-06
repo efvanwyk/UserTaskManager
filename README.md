@@ -44,6 +44,22 @@ Password:
 * The Task Completion Scheduler runs every 20 seconds and will update any tasks that are in a "pending" status and where the date_time has passed.
 
 # Using The Application
+### The following REST endpoints have been exposed:
+* /api/user/
+  - POST
+  - GET 
+* /api/user/{userId}
+  - PUT
+  - GET
+  - DELETE
+* /api/user/{userId}/task
+  - POST
+  - GET 
+* /api/user/{userId}/task/{taskId}
+  - PUT
+  - GET
+  - DELETE
+
 See the [Postman](http://www.getpostman.com/) chrome plugin, or alternatively, run any of the following curl commands:
 #### Create user
 ```sh
@@ -91,7 +107,7 @@ curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET
 curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/api/user/{user_id}/task
 ```
 
-### The following command line scripts make use of some these curl commands and are available for convenience
+### The following Windows command line scripts make use of some these curl commands and are available for convenience
 ```sh
 curl_cmd/DeleteTask.cmd
 curl_cmd/DeleteUser.cmd

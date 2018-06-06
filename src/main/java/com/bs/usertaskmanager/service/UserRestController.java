@@ -23,10 +23,10 @@ public class UserRestController
 		return userService.getUsers();
 	}
 
-	@RequestMapping(method=RequestMethod.GET, value="/api/user/{id}")
-	public User getUser(@PathVariable long id)
+	@RequestMapping(method=RequestMethod.GET, value="/api/user/{userId}")
+	public User getUser(@PathVariable long userId)
 	{
-		return userService.getUser(id);
+		return userService.getUser(userId);
 	}
 
 	@RequestMapping(method=RequestMethod.POST, value="/api/user")
@@ -35,15 +35,15 @@ public class UserRestController
 		userService.createUser(user);
 	}
 
-	@RequestMapping(method=RequestMethod.DELETE, value="/api/user/{id}")
-	public void deleteUser(@PathVariable long id)
+	@RequestMapping(method=RequestMethod.DELETE, value="/api/user/{userId}")
+	public void deleteUser(@PathVariable long userId)
 	{
-		userService.deleteUser(id);
+		userService.deleteUser(userId);
 	}
 
-	@RequestMapping(method=RequestMethod.PUT, value="/api/user/{id}")
-	public void updateUser(@PathVariable long id, @RequestBody User user)
+	@RequestMapping(method=RequestMethod.PUT, value="/api/user/{userId}")
+	public void updateUser(@PathVariable long userId, @RequestBody User user)
 	{
-		userService.updateUser(id, user);
+		userService.updateUser(userId, user);
 	}
 }

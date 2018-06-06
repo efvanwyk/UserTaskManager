@@ -1,6 +1,7 @@
 package com.bs.usertaskmanager.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.bs.usertaskmanager.model.Task;
 import com.bs.usertaskmanager.model.XTaskNotFoundException;
+import com.bs.usertaskmanager.model.Task.TaskStatus;
 import com.bs.usertaskmanager.repo.TaskRepository;
 
 @Service
-class TaskService 
+public class TaskService 
 {
 	@Autowired
 	private TaskRepository taskRepo;
@@ -40,6 +42,17 @@ class TaskService
 		taskRepo.deleteById(id);
 	}
 	
+	/**
+	 * Performs a full update on the provided task.
+	 * 
+	 * @param task
+	 * @return
+	 */
+	public Task updateTask(Task task)
+	{
+		return taskRepo.save(task);
+	}
+	
 	public Task updateTask(long id, Task update, long userId)
 	{
 		// even though taskRepo's save performs an upsert of the provided task, first load existing
@@ -48,5 +61,12 @@ class TaskService
 		task.update(update);
 		taskRepo.save(task);
 		return task;
+	}
+	
+	public List<Task> getTasksByStatusAndBeforeDate(TaskStatus taskStatus, Date date)
+	{
+		List<Task> tasks = new ArrayList<>();
+		taskRepo.findByStatusAndDatetimeBefore(taskStatus.getDisplayName(), date).forEach(t -> tasks.add(t));
+		return tasks;
 	}
 }

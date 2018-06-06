@@ -2,7 +2,6 @@ package com.bs.usertaskmanager.scheduler;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.bs.usertaskmanager.model.Task;
 import com.bs.usertaskmanager.model.Task.TaskStatus;
-import com.bs.usertaskmanager.repo.TaskRepository;
+import com.bs.usertaskmanager.service.TaskService;
 
 @Component
 public class TaskCompletionScheduledTask 
@@ -26,31 +25,25 @@ public class TaskCompletionScheduledTask
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     
     @Autowired
-    TaskRepository taskRepo;
+    TaskService taskService;
     
     @Scheduled(fixedRate = TASK_RATE_MS)
     public void scheduleTaskWithFixedRate() 
     {
-    	completeFinishedTasks();
+    	processOldPendingTasks();
     }
     
-    private void completeFinishedTasks()
+    private void processOldPendingTasks()
     {
-    	List<Task> tasks = new ArrayList<>();
-        taskRepo.findAll().forEach(tasks::add);
-        for(Task t : tasks)
-        	completeTaskIfRequired(t);
+    	List<Task> tasks = taskService.getTasksByStatusAndBeforeDate(TaskStatus.PENDING, new Date());
+    	tasks.forEach(t -> completeTask(t));
     }
     
-    private void completeTaskIfRequired(Task task)
+    private void completeTask(Task task)
     {
-    	Date now = new Date();
-    	if (TaskStatus.PENDING.getDisplayName().equals(task.getStatus()) && task.getDatetime().before(now))
-		{
-    		task.markAsDone();
-    		taskRepo.save(task);
-    		log("Task '"+task.getId() + ":"+task.getName()+"' with date '"+task.getDatetime()+"' marked as "+TaskStatus.DONE.getDisplayName() + ".");
-    	}
+    	task.markAsDone();
+		taskService.updateTask(task);
+		log("Task '"+task.getId() + ":"+task.getName()+"' for date '"+task.getDatetime()+"' update to "+TaskStatus.DONE.getDisplayName() + ".");
     }
     
     private void log(String log)

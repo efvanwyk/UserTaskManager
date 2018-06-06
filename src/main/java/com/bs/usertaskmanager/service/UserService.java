@@ -12,7 +12,7 @@ import com.bs.usertaskmanager.model.XUsernameInUseException;
 import com.bs.usertaskmanager.repo.UserRepository;
 
 @Service
-class UserService 
+public class UserService 
 {
 //	UserRepository userRepo = new UserRepositoryFactory().getUserRepository();
 	@Autowired

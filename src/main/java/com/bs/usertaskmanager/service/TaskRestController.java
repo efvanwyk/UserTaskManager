@@ -23,7 +23,7 @@ public class TaskRestController
 		return taskService.getTasks(userId);
 	}
 
-	@RequestMapping(method=RequestMethod.GET, value="/api/user/{userId}/task/{id}")
+	@RequestMapping(method=RequestMethod.GET, value="/api/user/{userId}/task/{taskId}")
 	public Task getTask(@PathVariable long id, @PathVariable long userId)
 	{
 		return taskService.getTask(id, userId);
@@ -36,13 +36,13 @@ public class TaskRestController
 		taskService.createTask(task, userId);
 	}
 
-	@RequestMapping(method=RequestMethod.DELETE, value="/api/user/{userId}/task/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/api/user/{userId}/task/{taskId}")
 	public void deleteTask(@PathVariable long id, @PathVariable long userId)
 	{
 		taskService.deleteTask(id, userId);
 	}
 
-	@RequestMapping(method=RequestMethod.PUT, value="/api/user/{userId}/task/{id}")
+	@RequestMapping(method=RequestMethod.PUT, value="/api/user/{userId}/task/{taskId}")
 	public void updateTask(@PathVariable long id, @RequestBody Task task, @PathVariable long userId)
 	{
 		task.setUserFromId(userId);

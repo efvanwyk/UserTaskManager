@@ -6,10 +6,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class UserTaskManagerApplication {
-	
-	public static final String APP_NAME = "user-task-manager";
-	
+public class UserTaskManagerApplication 
+{
 	public static void main(String[] args) 
 	{
 		SpringApplication.run(UserTaskManagerApplication.class, args);
